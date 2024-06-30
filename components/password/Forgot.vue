@@ -91,7 +91,7 @@ export default {
     align-items: center;
     justify-content: center;
     margin-top: 48px;
-    background: #B188EA;
+    background: #dbae5f;
     border-radius: 8px;
     border: none;
     color: white;

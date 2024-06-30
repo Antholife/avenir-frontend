@@ -116,7 +116,7 @@ export default {
             <p class="header"><img style="margin-right: 8px" src="@/assets/connect/phone-call.svg" alt="phone-call"/>+94
                 0116 789 754</p>
             <div style="display: flex; justify-content: center; margin-top: 79px">
-                <img src="@/assets/connect/influenceur.png" alt="influenceur" :width=312 :height=456 />
+                <img style="border-radius: 20px" src="@/assets/homepage/relationTranspSection/relationTransp.png" alt="home" :width=312 :height=456 />
             </div>
             <div style="margin-left: 98px; margin-top: 87px">
                 <p class="titleRight">Rejoins la communauté</p>
@@ -184,7 +184,7 @@ export default {
     align-items: center;
     justify-content: center;
     margin-top: 48px;
-    background: #B188EA;
+    background: #dbae5f;
     border-radius: 8px;
     border: none;
     color: white;
@@ -313,7 +313,7 @@ label {
 }
 
 .colorLink {
-    color: #B188EA;
+    color: #dbae5f;
     cursor: pointer;
     text-decoration: none;
 }

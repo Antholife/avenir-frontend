@@ -11,7 +11,7 @@ export default {
     },
     async mounted() {
         try {
-            const response = await axios.get('http://localhost:1337/api/news?populate=img')
+            const response = await axios.get('http://localhost:1337/api/newss?populate=photo')
             this.news = response.data.data
         } catch (error) {
             this.error = error;
@@ -25,7 +25,7 @@ export default {
     <h1>Les news</h1>
     <div class="container">
       <div class="col" v-for="oneNews in news">
-        <SharedNewsShared :date="oneNews.attributes.date" :text="oneNews.attributes.text" :img="oneNews.attributes.img.data.attributes.url"/>
+        <SharedNewsShared :title="oneNews.attributes.title" :description="oneNews.attributes.description" :img="oneNews.attributes.photo.data.attributes.url"/>
       </div>
     </div>
   </section>

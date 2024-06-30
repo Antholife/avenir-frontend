@@ -7,29 +7,29 @@ import sal from "sal.js";
 export default {
     data() {
         return {
-            influenceurs: [],
+            locations: [],
             map: null,
             error: null,
             open: false,
-            currentInfluenceur: null,
+            location: null,
             urlToIllu: null,
             features: [],
         }
     },
     methods: {
-        modal(influenceur) {
-            if ((this.currentInfluenceur && this.currentInfluenceur.id) === influenceur.id) {
+        modal(location) {
+            if ((this.location && this.location.id) === location.id) {
                 this.open = false
-                this.setMarkerClicked(this.currentInfluenceur.id, false)
-                this.currentInfluenceur = null
+                this.setMarkerClicked(this.location.id, false)
+                this.location = null
             } else {
                 this.open = true
-                if (this.currentInfluenceur){
-                    this.setMarkerClicked(this.currentInfluenceur.id, false)
+                if (this.location){
+                    this.setMarkerClicked(this.location.id, false)
                 }
-                this.currentInfluenceur = influenceur
-                this.urlToIllu = `http://localhost:1337${this.currentInfluenceur.properties.illu}`
-                this.setMarkerClicked(influenceur.id, true)
+                this.location = location
+                this.urlToIllu = `http://localhost:1337${this.location.properties.illu}`
+                this.setMarkerClicked(location.id, true)
             }
         },
         setMarkerClicked(id, isClicked) {
@@ -51,28 +51,28 @@ export default {
             zoom: 12, // starting zoom
         });
         try {
-            const response = await axios.get('http://localhost:1337/api/influenceurs?populate=illu')
-            this.influenceurs = response.data.data
+            const response = await axios.get('http://localhost:1337/api/locations?populate=illu')
+            this.locations = response.data.data
         } catch (error) {
             this.error = error;
         }
 
         let idFeature = 1
-        this.influenceurs.forEach(influenceur => {
+        this.locations.forEach(location => {
             const data = {
                 type: 'Feature',
                 id: idFeature,
                 properties: {
-                    name: influenceur.attributes.name,
-                    latitude: influenceur.attributes.latitude,
-                    longitude: influenceur.attributes.longitude,
-                    type: influenceur.attributes.type,
-                    illu: influenceur.attributes.illu.data.attributes.url,
-                    description: influenceur.attributes.description,
+                    name: location.attributes.name,
+                    latitude: location.attributes.latitude,
+                    longitude: location.attributes.longitude,
+                    type: location.attributes.type,
+                    illu: location.attributes.illu.data.attributes.url,
+                    description: location.attributes.description,
                 },
                 geometry: {
                     type: 'Point',
-                    coordinates: [influenceur.attributes.longitude, influenceur.attributes.latitude]
+                    coordinates: [location.attributes.longitude, location.attributes.latitude]
                 }
             }
             idFeature++
@@ -99,7 +99,7 @@ export default {
                 source: 'geojson',
                 filter: ['has', 'point_count'],
                 paint: {
-                    'circle-color': "#B188EA",
+                    'circle-color': "#dbae5f",
                     'circle-radius': [
                         'step',
                         ['get', 'point_count'],
@@ -134,7 +134,7 @@ export default {
                         'case',
                         ['boolean', ['feature-state', 'clicked'], false],
                         "#33007A",
-                        "#B188EA"
+                        "#dbae5f"
                     ],
                     'circle-radius': 12,
                 }
@@ -184,8 +184,8 @@ export default {
                  data-sal-duration="1000"
                  data-sal-easing="ease"
                  class="header">
-                <h2 class="title">Hello,</h2>
-                <p>Trouve l'influenceur qu'il te faut ici !</p>
+                <h2 class="title">Bienvenu</h2>
+                <p>Trouve la location qu'il te faut ici !</p>
             </div>
             <div class="content" data-sal="fade"
                  data-sal-delay="600"
@@ -193,11 +193,11 @@ export default {
                  data-sal-easing="ease">
                 <div id='map'></div>
                 <div class="popup" v-if="open">
-                    <img class="illu" :src=urlToIllu alt="illustration influenceur">
+                    <img class="illu" :src=urlToIllu alt="illustration">
                     <div class="contentText">
-                        <h3 class="titlePopup">{{ this.currentInfluenceur.properties.name }},
-                            {{ this.currentInfluenceur.properties.type }}</h3>
-                        <p>{{ this.currentInfluenceur.properties.description }}</p>
+                        <h3 class="titlePopup">{{ this.location.properties.name }},
+                            {{ this.location.properties.type }}</h3>
+                        <p>{{ this.location.properties.description }}</p>
                     </div>
                     <NuxtLink :to="'/map'" class="button">Contacter</NuxtLink>
                 </div>
@@ -282,7 +282,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #B188EA;
+    background: #dbae5f;
     border-radius: 8px;
     color: white;
     text-decoration: none;

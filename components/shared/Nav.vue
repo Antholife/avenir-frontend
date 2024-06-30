@@ -10,7 +10,7 @@
         </NuxtLink>
       </h3>
       <div class="panel">
-        <NuxtLink class="link" :to="'/services'">Actualités</NuxtLink>
+        <NuxtLink class="link" :to="'/news'">Actualités</NuxtLink>
         <NuxtLink class="link" :to="'/sales'">Vente/Achat</NuxtLink>
         <NuxtLink class="link" :to="'/manage'">Location</NuxtLink>
         <NuxtLink class="link" :to="'/location'">Gestion locative</NuxtLink>

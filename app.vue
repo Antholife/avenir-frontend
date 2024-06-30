@@ -1,5 +1,6 @@
 <template>
   <NuxtLayout>
+    <SharedNav />
    <NuxtPage />
   </NuxtLayout>
 </template>
@@ -47,3 +48,5 @@ p {
   }
 </style>
 
+<script setup lang="ts">
+</script>

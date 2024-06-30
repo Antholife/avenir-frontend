@@ -17,7 +17,7 @@
          data-sal-delay="300"
          data-sal-duration="150"
          data-sal-easing="ease">
-      <img src="@/assets/homepage/headerSection/rightImg.png" :width=465 :height=588 alt="influenceur">
+      <img src="@/assets/homepage/headerSection/rightImg.png" :width=465 :height=588 alt="location">
     </div>
   </section>
 </template>

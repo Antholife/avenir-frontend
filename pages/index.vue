@@ -1,6 +1,5 @@
 <template>
   <div>
-    <SharedNav />
     <HomepageHeader/>
     <HomepageRelationSection />
     <HomepageRelationTranspSection />

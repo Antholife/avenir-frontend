@@ -1,9 +1,9 @@
 <script setup>
 defineProps({
-  date: {
+  title: {
     type: String,
   },
-  text: {
+  description: {
     type: String,
   },
   img: {
@@ -18,10 +18,10 @@ defineProps({
        data-sal-duration="400"
        data-sal-easing="ease"
        class="ctnNews">
-    <p>{{date}}</p>
+    <p>{{title}}</p>
     <hr />
-    <p class="text">{{text}}</p>
-    <img :src="`http://localhost:1337${img}`" alt="icon" />
+    <p class="text">{{description}}</p>
+    <img style="border-radius: 20px" :src="`http://localhost:1337${img}`" alt="icon" />
   </div>
 </template>
 
