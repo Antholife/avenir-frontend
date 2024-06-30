@@ -1,0 +1,3 @@
+<template>
+    <MapMapping />
+</template>

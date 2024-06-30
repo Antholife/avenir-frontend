@@ -1,0 +1,23 @@
+{
+  "name": "AvenirImmobilier",
+  "version": "0.1.4",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "nuxt": "^3.11.2"
+  },
+  "dependencies": {
+    "@strapi/provider-email-sendgrid": "^4.24.5",
+    "axios": "^1.7.2",
+    "mapbox-gl": "^2.15.0",
+    "sal.js": "^0.8.5",
+    "vue": "^3.4.27"
+  },
+  "packageManager": "yarn@4.2.2"
+}
